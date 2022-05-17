@@ -5,4 +5,4 @@ https://script.agenatrader.com/
 
 
 # Beschreibung
-![Image](images/Indicator.jpg)
+![Image](https://github.com/ghaiden/StockTrading-StrategySimulation/blob/main/Images/Indicator.JPG)
