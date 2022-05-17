@@ -5,4 +5,4 @@ https://script.agenatrader.com/
 
 
 # Beschreibung
-![] (images/Indicator.jpg)
+![Image](images/Indicator.jpg)
