@@ -9,3 +9,5 @@ https://script.agenatrader.com/
 
 
 ![Image](https://github.com/ghaiden/StockTrading-StrategySimulation/blob/main/Images/Indicator.JPG)
+
+![Image](https://github.com/ghaiden/StockTrading-StrategySimulation/blob/main/Images/OutputConsole.JPG)
