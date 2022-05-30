@@ -11,8 +11,10 @@ Mit Hilfe dieser Software kann ein Algorithmus zum Automatisierten Handel mit Ak
 
 ![Image](https://github.com/ghaiden/StockTrading-StrategySimulation/blob/main/Images/Simulation.JPG)
 
-Der hier verwendete Handelsalgorithmus ist an die Dow-Theorie angelehnt.
+Der hier verwendete Handelsalgorithmus ist an die Dow-Theorie angelehnt. Nach der Dow-Theorie weist der Markt 3 Trends auf. Den langfristigen, mittelfristigen und kurzfristigen Trend. 
 
+
+Quelle:
 https://www.boerse.de/thema/dow-theorie/
 
 ![Image](https://github.com/ghaiden/StockTrading-StrategySimulation/blob/main/Images/Indicator.JPG)
