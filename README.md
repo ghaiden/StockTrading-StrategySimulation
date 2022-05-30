@@ -21,4 +21,6 @@ https://www.boerse.de/thema/dow-theorie/
 
 ![Image](https://github.com/ghaiden/StockTrading-StrategySimulation/blob/main/Images/Indicator.JPG)
 
+Die Handelsstrategie wird ausgewertet und gibt Kennzahlen über die Profitabilität aus.
+
 ![Image](https://github.com/ghaiden/StockTrading-StrategySimulation/blob/main/Images/OutputConsole.JPG)
