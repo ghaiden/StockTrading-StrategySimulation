@@ -108,7 +108,7 @@ namespace AgenaTrader.UserCode
 		// Controller
 		//
 		private void controller(Moving moveBigtrend)
-        {
+        	{
 			
 		}
 
@@ -118,7 +118,7 @@ namespace AgenaTrader.UserCode
 		// Testing
 		//
 		private void testing(Moving moveBigtrend, Breakout breakoutBigtrend, Trend trendBigtrend)
-        {
+        	{
 			moveBigtrend.CalculateMovingDirection();
 			moveBigtrend.CalculateMovingChange();
 			moveBigtrend.CalculateLastSwingPoint();
@@ -146,7 +146,7 @@ namespace AgenaTrader.UserCode
 		// Testing Outputs
 		//
 		private void testing_outputs_moving(Moving moveBigtrend)
-        {
+        	{
 			bool output_MovingUp = false;
 			bool output_MovingDown = false;
 			bool output_MovingChangeUp = false;
@@ -160,7 +160,7 @@ namespace AgenaTrader.UserCode
 
 
 			if (moveBigtrend.MovingUp && output_MovingUp)
-            {
+            		{
 				AddChartText("Text1" + ProcessingBarIndex, moveBigtrend.MovingUp.ToString(), 0, High[0], Color.Black);
 			}
 
@@ -180,22 +180,22 @@ namespace AgenaTrader.UserCode
 			}
 
 			if (output_LastSwingHigh)
-            {
+            		{
 				AddChartText("Text3" + ProcessingBarIndex, moveBigtrend.LastSwingHigh[0].ToString(), 0, High[0], Color.Black);
 			}
 
 			if (output_LastSwingLow)
-            {
+            		{
 				AddChartText("Text4" + ProcessingBarIndex, moveBigtrend.LastSwingLow[0].ToString(), 0, Low[0], Color.Black);
 			}
 
 			if (output_PreviousLastSwingHigh)
-            {
+            		{
 				AddChartText("Text5" + ProcessingBarIndex, moveBigtrend.PreviousLastSwingHigh[0].ToString(), 0, High[0], Color.Black);
 			}
 
 			if (output_PreviousLastSwingLow)
-            {
+            		{
 				AddChartText("Text6" + ProcessingBarIndex, moveBigtrend.PreviousLastSwingLow[0].ToString(), 0, Low[0], Color.Black);
 			}
 
@@ -213,24 +213,24 @@ namespace AgenaTrader.UserCode
 
 
 		private void testing_outputs_breakout(Breakout trendBigtrend)
-        {
+        	{
 			bool output_BreakoutUp = false;
 			bool output_BreakoutDown = false;
 
 			if (trendBigtrend.BreakoutUp && output_BreakoutUp)
-            {
+            		{
 				BackColorAll = Color.FromArgb(50, Color.Green);
 			}
 
 			if (trendBigtrend.BreakoutDown && output_BreakoutDown)
-            {
+            		{
 				BackColorAll = Color.FromArgb(50, Color.Red);
 			}
-        }
+       		}
 
 
 		private void testing_output_trend(Trend trendBigtrend)
-        {
+        	{
 			bool output_trendUp = true;
 			bool output_trendDown = true;
 			bool output_noTrend = false;
@@ -238,26 +238,26 @@ namespace AgenaTrader.UserCode
 
 			
 			if (trendBigtrend.UpTrend[0] && output_trendUp)
-            {
+            		{
 				BackColorAll = Color.FromArgb(50, Color.Green);
 				//AddChartText("Text7" + ProcessingBarIndex, trendBigtrend.UpTrend[0].ToString(), 0, High[0], Color.Black);
 			}
 
 			if (trendBigtrend.DownTrend[0] && output_trendDown)
-            {
+            		{
 				BackColorAll = Color.FromArgb(50, Color.Red);
 			}
 
 			if (trendBigtrend.NoTrend[0] && output_noTrend)
-            {
+            		{
 				BackColorAll = Color.FromArgb(50, Color.Blue);
 			}
 
 			if (output_previousTrend)
-            {
+            		{
 				AddChartText("Text8" + ProcessingBarIndex, trendBigtrend.PreviousTrend[0].ToString(), 0, High[0], Color.Black);
 			}
-        }
+       		}
 		
 
 		
@@ -313,8 +313,8 @@ namespace AgenaTrader.UserCode
 
 		// Konstruktor
 		public Moving(IMultiBarsItem item, 
-					  DataSeries LastSwingHigh, DataSeries LastSwingLow, 
-					  DataSeries PreviousLastSwingHigh, DataSeries PreviousLastSwingLow)
+			      DataSeries LastSwingHigh, DataSeries LastSwingLow, 
+			      DataSeries PreviousLastSwingHigh, DataSeries PreviousLastSwingLow)
 		{
 			this.item = item;
 			this.LastSwingHigh = LastSwingHigh;
@@ -374,12 +374,12 @@ namespace AgenaTrader.UserCode
 		// Berechnet nach einem Farbwechsel die letzten SwingPoints, PreviousSwingPoints
 		//
 		public void CalculateLastSwingPoint()
-        {
+        	{
 			// Farbwechsel nach oben (gruen)
 			if (MovingChangeUp)
-            {
+            		{
 				for (int i=1; i<=10; i++)
-                {
+                		{
 					bool compareLows = item.Low[i] < item.Low[i+1];
 					if (compareLows)
 					{
@@ -398,7 +398,7 @@ namespace AgenaTrader.UserCode
 
 			// Farbwechsel nach unten (gruen)
 			if (MovingChangeDown)
-            {
+            		{
 				for (int i = 1; i <= 10; i++)
 				{
 					bool compareHighs = item.High[i] > item.High[i + 1];
@@ -411,10 +411,10 @@ namespace AgenaTrader.UserCode
 				}	
 			}
 			else
-            {
+            		{
 				LastSwingHigh.Set(LastSwingHigh[1]);
 				PreviousLastSwingHigh.Set(PreviousLastSwingHigh[1]);
-            }
+            		}
 		}
 
 				
@@ -428,7 +428,7 @@ namespace AgenaTrader.UserCode
 	// Klasse Breakout
 	// **************************************************************************
 	public class Breakout : UserIndicator
-    {
+    	{
 		// Properties
 		private IMultiBarsItem item { get; }
 
@@ -441,12 +441,11 @@ namespace AgenaTrader.UserCode
 
 		// Konstruktor
 		public Breakout(IMultiBarsItem item, 
-			            DataSeries LastSwingHigh, DataSeries LastSwingLow)
-        {
+			        DataSeries LastSwingHigh, DataSeries LastSwingLow)
+        	{
 			this.item = item;
 			this.LastSwingHigh = LastSwingHigh;
 			this.LastSwingLow = LastSwingLow;
-			
 		}
 
 
@@ -455,7 +454,7 @@ namespace AgenaTrader.UserCode
 		// Berechnet ob es einen Durchburch nach oben gab (Breakout Down)
 		//
 		public void CalculateBreakoutUp()
-        {
+        	{
 			bool priceCrossAboveLastSwingHigh = item.High[0] > LastSwingHigh[0] && item.High[1] <= LastSwingHigh[1];
 			bool lastSwingUpHasValue = LastSwingHigh[0] != 0;
 
@@ -470,17 +469,17 @@ namespace AgenaTrader.UserCode
 		// Berechnet ob es einen Durchburch nach unten gab (Breakout Down)
 		//
 		public void CalculateBreakoutDown()
-        {
+        	{
 			bool priceCrossBelowLastSwingLow = item.Low[0] < LastSwingLow[0] && item.Low[1] >= LastSwingLow[1];
 			bool lastSwingDownHasValue = LastSwingLow[0] != 0;
 
 			if (priceCrossBelowLastSwingLow && lastSwingDownHasValue)
-            {
+            		{
 				BreakoutDown = true;
-            }
-        }
+            		}
+        	}
 
-    }
+    	}
 
 
 
@@ -490,7 +489,7 @@ namespace AgenaTrader.UserCode
 	// Klasse Trend
 	// **************************************************************************
 	public class Trend
-    {
+    	{
 		// Properties
 		private IMultiBarsItem item { get; }
 		private Moving moving { get; }
@@ -501,15 +500,14 @@ namespace AgenaTrader.UserCode
 		public BoolSeries NoTrend { get; private set; }
 		public StringSeries PreviousTrend { get; private set; }
 
-
 		
 		// Konstruktor
 		public Trend(IMultiBarsItem item, 
-					 Moving moving,
-					 Breakout breakout, 
-					 BoolSeries UpTrend, BoolSeries DownTrend, BoolSeries NoTrend,
-					 StringSeries PreviousTrend)
-    	{
+		             Moving moving,
+			     Breakout breakout, 
+			     BoolSeries UpTrend, BoolSeries DownTrend, BoolSeries NoTrend,
+			     StringSeries PreviousTrend)
+    		{
 			this.item = item;
 			this.moving = moving;
 			this.breakout = breakout;
@@ -526,16 +524,16 @@ namespace AgenaTrader.UserCode
 		// Ausgabe als Signal
 		//
 		public void CalculateUpTrendSignal()
-        {
+        	{
 			bool breakoutUp = breakout.BreakoutUp;
 			bool higherLows = moving.LastSwingLow[0] > moving.PreviousLastSwingLow[0];
 
 			if (breakoutUp && higherLows)
-            {
+            		{
 				UpTrend.Set(true);
 				DownTrend.Set(false);
 				NoTrend.Set(false);
-            }
+            		}
 		}
 
 
@@ -544,16 +542,16 @@ namespace AgenaTrader.UserCode
 		// Ausgabe als Signal
 		//
 		public void CalculateDownTrendSignal()
-        {
+        	{
 			bool breakoutDown = breakout.BreakoutDown;
 			bool lowerHighs = moving.LastSwingHigh[0] < moving.PreviousLastSwingHigh[0];
 
 			if (breakoutDown && lowerHighs)
-            {
+            		{
 				UpTrend.Set(false);
 				DownTrend.Set(true);
 				NoTrend.Set(false);
-            }
+            		}
 		}
 
 
@@ -561,7 +559,7 @@ namespace AgenaTrader.UserCode
 		// Berechnet den derzeit vorhandenen Trend
 		//
 		public void CalculateCurrentTrend()
-        {
+        	{
 			bool breakoutUp = breakout.BreakoutUp;
 			bool higherLows = moving.LastSwingLow[0] > moving.PreviousLastSwingLow[0];
 
@@ -583,12 +581,12 @@ namespace AgenaTrader.UserCode
 			}
 
 			else 
-            {
+            		{
 				UpTrend.Set(UpTrend[1]);
 				DownTrend.Set(DownTrend[1]);
 				NoTrend.Set(NoTrend[1]);
 				PreviousTrend.Set(PreviousTrend[1]);
-            }
+           		 }
 		}
 
 		
@@ -597,7 +595,7 @@ namespace AgenaTrader.UserCode
 		// Berechnet ob ein Trendbruch auftritt
 		//
 		public void CalculateTrendBreak() 
-        {
+        	{
 			bool trendBreakUpTrend = item.Low[0] < moving.LastSwingLow[0] && item.Low[1] >= moving.LastSwingLow[1];
 			bool upTrend = UpTrend[0];
 
@@ -605,29 +603,29 @@ namespace AgenaTrader.UserCode
 			bool downTrend = DownTrend[0];
 
 			if (upTrend && trendBreakUpTrend)
-            {
+            		{
 				UpTrend.Set(false);
 				DownTrend.Set(false);
 				NoTrend.Set(true);
 				PreviousTrend.Set("UpTrend");
-            }
+            		}
 
 			else if (downTrend && trendBreakDownTrend)
-            {
+            		{
 				UpTrend.Set(false);
 				DownTrend.Set(false);
 				NoTrend.Set(true);
 				PreviousTrend.Set("DownTrend");
-            }
+            		}
 					
-        }
+        	}
 
 
 		//----------------------------------------------------------------------
 		// Berechnet die Wiederaufnahme eines zuvor gebrochenen Trends
 		//
 		public void CalculateResumeTrend()
-        {
+       		{
 			bool noTrend = NoTrend[0];
 			bool previousTrendisUp = PreviousTrend[0] == "UpTrend";
 			bool previousTrendisDown = PreviousTrend[0] == "DownTrend";
@@ -639,34 +637,34 @@ namespace AgenaTrader.UserCode
 			bool LastSwingLowHigerThanPreviousLastSwingLow = moving.LastSwingLow[0] > moving.PreviousLastSwingHigh[0];
 
 			if (noTrend && previousTrendisUp && resumeUpTrend)
-            {
+            		{
 				UpTrend.Set(true);
 				DownTrend.Set(false);
 				NoTrend.Set(false);
-            }
+            		}
 
 			else if (noTrend && previousTrendisDown && resumeDownTrend)
-            {
+            		{
 				UpTrend.Set(false);
 				DownTrend.Set(true);
 				NoTrend.Set(false);
-            }
+            		}
 
 			else if (noTrend && previousTrendisDown && resumeUpTrendAfterCounterTrendDown && LastSwingHighLowerThanPreviousLastSwingHigh)
-            {
+            		{
 				UpTrend.Set(true);
 				DownTrend.Set(false);
 				NoTrend.Set(false);
-            }
+            		}
 
 			else if (noTrend && previousTrendisUp && resumeDownTrendAfterCounterTrendUp && LastSwingLowHigerThanPreviousLastSwingLow)
-            {
+            		{
 				UpTrend.Set(false);
 				DownTrend.Set(true);
 				NoTrend.Set(false);
-            }
+            		}
 
-        }
+        	}
 
 	}
 
