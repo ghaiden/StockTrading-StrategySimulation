@@ -25,7 +25,6 @@ namespace AgenaTrader.UserCode
 		TimeFrame TF_4Hour = new TimeFrame("4 Hour HA");
 		TimeFrame TF_15Min = new TimeFrame("15 Min HA");
 
-		
 
 		//----------------------------------------------------------------------
 		// Datenserien
@@ -79,11 +78,9 @@ namespace AgenaTrader.UserCode
 
 		protected override void OnCalculate()
 		{
-			
 			var itemWeek = MultiBars.GetBarsItem(TF_Week);
 			var item4Hour = MultiBars.GetBarsItem(TF_4Hour);
 			var item15Min = MultiBars.GetBarsItem(TF_15Min);
-			
 						
 			Moving movingBigtrend = new Moving(itemWeek, LastSwingHigh, LastSwingLow, PreviousLastSwingHigh, PreviousLastSwingLow);
 			//Moving movingGlw = new Moving(item4Hour, LastSwingHigh, LastSwingLow);
@@ -96,10 +93,8 @@ namespace AgenaTrader.UserCode
 			Trend trendBigtrend = new Trend(itemWeek, movingBigtrend, breakoutBigtrend, UpTrend, DownTrend, NoTrend, PreviousTrend);
 			//Trend trendGwl = new Trend(item4Hour, breakoutGwl);
 			//Trend trendSignal = new Trend(item15Min, breakoutSignal);
-				
-			
+							
 			testing(movingBigtrend, breakoutBigtrend, trendBigtrend);
-			
 		}
 
 		
@@ -124,20 +119,14 @@ namespace AgenaTrader.UserCode
 			moveBigtrend.CalculateLastSwingPoint();
 			testing_outputs_moving(moveBigtrend);
 
-
 			breakoutBigtrend.CalculateBreakoutUp();
 			breakoutBigtrend.CalculateBreakoutDown();
 			testing_outputs_breakout(breakoutBigtrend);
-
-			//trendBigtrend.CalculateUpTrend();
-			//trendBigtrend.CalculateDownTrend();
+			
 			trendBigtrend.CalculateCurrentTrend();
 			trendBigtrend.CalculateTrendBreak();
 			trendBigtrend.CalculateResumeTrend();
 			testing_output_trend(trendBigtrend);
-			
-			
-						
 		}
 
 
@@ -240,7 +229,7 @@ namespace AgenaTrader.UserCode
 			if (trendBigtrend.UpTrend[0] && output_trendUp)
             		{
 				BackColorAll = Color.FromArgb(50, Color.Green);
-				//AddChartText("Text7" + ProcessingBarIndex, trendBigtrend.UpTrend[0].ToString(), 0, High[0], Color.Black);
+				AddChartText("Text7" + ProcessingBarIndex, trendBigtrend.UpTrend[0].ToString(), 0, High[0], Color.Black);
 			}
 
 			if (trendBigtrend.DownTrend[0] && output_trendDown)
@@ -338,7 +327,7 @@ namespace AgenaTrader.UserCode
 				MovingDown = false;
 			}
 
-			if (isMovingDown)
+			else if (isMovingDown)
 			{
 				MovingUp = false;
 				MovingDown = true;
@@ -451,7 +440,7 @@ namespace AgenaTrader.UserCode
 
 
 		//----------------------------------------------------------------------
-		// Berechnet ob es einen Durchburch nach oben gab (Breakout Down)
+		// Berechnet ob es einen Durchburch nach oben gab (Breakout Up)
 		//
 		public void CalculateBreakoutUp()
         	{
