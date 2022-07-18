@@ -457,8 +457,7 @@ namespace AgenaTrader.UserCode
 		//
 		public void CalculateBreakoutUp()
         	{
-			//bool priceCrossAboveLastSwingHigh = item.High[0] > LastSwingHigh[0] && item.High[1] <= LastSwingHigh[1];		// Breakout High
-			bool priceCrossAboveLastSwingHigh = Close[0] > LastSwingHigh[0] && Close[1] <= LastSwingHigh[1];		// Breakout Close
+			bool priceCrossAboveLastSwingHigh = Close[0] > LastSwingHigh[0] && Close[1] <= LastSwingHigh[1];		
 			bool lastSwingUpHasValue = LastSwingHigh[0] != 0;
 
 			if (priceCrossAboveLastSwingHigh && lastSwingUpHasValue)
@@ -473,8 +472,7 @@ namespace AgenaTrader.UserCode
 		//
 		public void CalculateBreakoutDown()
         	{
-			//bool priceCrossBelowLastSwingLow = item.Low[0] < LastSwingLow[0] && item.Low[1] >= LastSwingLow[1];         // Breakout Low
-			bool priceCrossBelowLastSwingLow = Close[0] < LastSwingLow[0] && Close[1] >= LastSwingLow[1];		  // Breakout Close
+			bool priceCrossBelowLastSwingLow = Close[0] < LastSwingLow[0] && Close[1] >= LastSwingLow[1];		 
 			bool lastSwingDownHasValue = LastSwingLow[0] != 0;
 
 			if (priceCrossBelowLastSwingLow && lastSwingDownHasValue)
