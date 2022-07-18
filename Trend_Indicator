@@ -24,7 +24,6 @@ namespace AgenaTrader.UserCode
 		TimeFrame TF_15Min = new TimeFrame("15 Min HA");
 
 		
-
 		//----------------------------------------------------------------------
 		// Datenserien
 		//
